@@ -146,6 +146,6 @@ def ask_ai(query: QueryModel):
                 max_output_tokens=8192
             )
         )
-        return {"answer": response.text}
+        return {"answer": response.candidates[0].content.parts[0].text}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
